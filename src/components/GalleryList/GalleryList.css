@@ -1,0 +1,23 @@
+/* Cheers to freecodecamp.org - I went back and redid their CSS Flexbox course to refresh my memory */
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    gap: 16px;
+}
+
+img {
+    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+button {
+    width: 100%;
+}

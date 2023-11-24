@@ -15,7 +15,7 @@ function App() {
   const getList = () => {
       axios({
         method: 'GET',
-        url: '/gallerylist'
+        url: '/gallery'
       })
         .then((response) => {
           setItems(response.data)
@@ -29,9 +29,9 @@ function App() {
     return (
       <div>
         <Header />
-        <GalleryList />
-        <p>The gallery goes here!</p>
-        <img src="images/goat_small.jpg"/>
+        <GalleryList items={items}/>
+        {/* <p>The gallery goes here!</p>
+        <img src="images/goat_small.jpg"/> */}
       </div>
     );
 }
