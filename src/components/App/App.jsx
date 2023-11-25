@@ -27,7 +27,7 @@ function App() {
     }
   
     return (
-      <div>
+      <div data-testid="app">
         <Header />
         <GalleryList items={items}/>
         {/* <p>The gallery goes here!</p>

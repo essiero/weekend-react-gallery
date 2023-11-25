@@ -4,7 +4,7 @@ import GalleryItem from './GalleryItem.jsx';
 
 function GalleryList ({ items }) {
     return (
-        <div class="gallery">
+        <div class="gallery" data-testid="galleryList">
             {items.map((item) => {
                 return (
                     <GalleryItem key={item.id} item={item} />
