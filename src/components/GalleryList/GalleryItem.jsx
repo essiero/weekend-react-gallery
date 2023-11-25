@@ -1,41 +1,21 @@
 import { useState } from 'react';
-import './GalleryList.css'
+import './GalleryList.css';
+import axios from 'axios';
 
 
-function GalleryItem({ item }) {
-    const likeCounter = (props) => {
-        let [likeCounter, setLikeCounter] = useState(0);
-        const incrementLikeCounter = () => {
-            setLikeCounter(
-                likeCounter + 1
-            );
-        }
+
+function GalleryItem({ item, getList }) {
+    const likeCounter = (e) => {
+        let itemID = e.target.id
+        axios({
+          method: 'PUT',
+          url: `/gallery/like/${itemID}`
+        }).then((response) => {
+          getList();
+        }).catch((error) => {
+          console.log('PUT /gallery/like/:id fail', error)
+        });
     }
-
-    // const createItem = (e) => {
-    //     e.preventDefault()
-    
-    //     const newItem = {
-    //       name: nameInput,
-    //       quantity: Number(quantityInput),
-    //       unit: unitInput
-    //     }
-    
-    //     axios({
-    //       method: 'POST',
-    //       url: '/items',
-    //       data: newItem
-    //     })
-    //       .then((response) => {
-    //         getItems()
-    //         setNameInput('')
-    //         setQuantityInput('')
-    //         setUnitInput('')
-    //       })
-    //       .catch((error) => {
-    //         console.error('createItem fail:', error)
-    //       })
-    //   }
 
     return (
         <div
@@ -47,11 +27,12 @@ function GalleryItem({ item }) {
             <br></br>
             {/* <div>Rocks Picked: {rockCounter} {rockCounter >= 50 ? 'done' : ''}</div> */}
             {/* <button onClick={rockCounter > 0 ? decrementRockCounter : 0}>Decrease</button> */}
-            <button onClick={likeCounter} data-testid="like">love it!</button>
-            <p>{item.likes > 0 ? `{item.likes} people love this!` : ''}</p>
-            <p data-testid="description">{item.description}</p>
+            <button onClick={likeCounter} id={item.id} data-testid="like">love it!</button>
+            <p>{item.likes > 0 ? item.likes + ' people love this!' : ''}</p>
+            <p>{item.title}</p>
         </div>
     )
 }
+
 
 export default GalleryItem;

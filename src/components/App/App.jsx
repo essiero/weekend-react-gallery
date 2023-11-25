@@ -29,7 +29,7 @@ function App() {
     return (
       <div data-testid="app">
         <Header />
-        <GalleryList items={items}/>
+        <GalleryList items={items} getList={getList}/>
         {/* <p>The gallery goes here!</p>
         <img src="images/goat_small.jpg"/> */}
       </div>
