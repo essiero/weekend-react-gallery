@@ -44,6 +44,18 @@ function GalleryItem({ item, getList }) {
         }
     }
 
+    const displayLikes = () => {
+        if(item.likes === 0){
+            return (<></>)
+        } else if (item.likes === 1){
+            return (<p>1 person loves this!</p>)
+        } else {
+            return (
+                <p>{item.likes} people love this!</p>
+            )          
+        }
+    }
+
     return (
         <div
             key={item.id}
@@ -58,7 +70,8 @@ function GalleryItem({ item, getList }) {
                 </img> */}
             <br></br>
             <button onClick={likeCounter} id={item.id} data-testid="like">love it!</button>
-            <p>{item.likes > 0 ? item.likes + ' people love this!' : ''}</p>
+            {displayLikes()}
+            {/* <p>{item.likes > 0 ? item.likes + ' people love this!' : ''}</p> */}
             <p>{item.title}</p>
         </div>
     )
