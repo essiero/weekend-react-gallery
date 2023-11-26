@@ -27,17 +27,16 @@ function GalleryItem({ item, getList }) {
 
         if (onDescription) {
             return (
-                <>
-                <>{item.description}</>
-                </>
+                <div 
+                    className='emptyBox'
+                    data-testid="description">{item.description}</div>
             )
         } else {
             return (
                 <div>
                 <img 
                     src={item.url} 
-                    data-testid="toggle" 
-                    onClick={toggleDescription}></img>
+                    ></img>
   
             </div>
             )
@@ -62,14 +61,15 @@ function GalleryItem({ item, getList }) {
             className="gallery-item"
             data-testid="galleryItem"
             onClick={toggleDescription}
-        >
+        ><div data-testid="toggle">
             {displayDescription()}
+            </div>
             {/* <img 
                 src={item.url} 
                 data-testid="toggle">
                 </img> */}
             <br></br>
-            <button onClick={likeCounter} id={item.id} data-testid="like">love it!</button>
+            <button onClick={likeCounter} id={item.id} data-testid="like">❤️</button>
             {displayLikes()}
             {/* <p>{item.likes > 0 ? item.likes + ' people love this!' : ''}</p> */}
             <p>{item.title}</p>

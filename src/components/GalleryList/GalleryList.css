@@ -19,9 +19,17 @@ img {
 }
 
 button {
+    display: flex;
     width: 100%;
+    max-width: 50px;
+    justify-content: center;
+    margin: auto;
 }
 
 p {
     text-align: center;
+}
+
+.emptyBox {
+    
 }
